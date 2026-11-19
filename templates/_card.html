@@ -1,0 +1,3 @@
+<a class="anime-card" href="{{ url_for('anime_detail',anime_id=item.id) }}" data-anime-id="{{ item.id }}">
+{% if item.poster %}<img loading="lazy" src="{{ item.poster }}" alt="{{ item.title }} poster">{% else %}<div class="poster-placeholder">SAKI</div>{% endif %}
+<div class="card-info"><strong>{{ item.title }}</strong><small>{{ item.year or 'Anime' }} · {{ item.status }}</small></div></a>
