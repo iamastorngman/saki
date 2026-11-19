@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block title %}Anime Catalogue — Saki{% endblock %}{% block content %}
+<p class="eyebrow">THE COLLECTION</p><h1 class="page-title">Anime catalogue</h1>
+<form class="filters"><input name="q" value="{{ q }}" placeholder="Search anime..."><select name="network"><option value="">All networks</option>{% for n in networks %}<option value="{{ n }}" {% if selected_network==n %}selected{% endif %}>{{ n }}</option>{% endfor %}</select><input name="genre" value="{{ genre }}" placeholder="Genre"><button class="button">Filter</button></form>
+<section class="cards">{% for item in anime %}{% include "_card.html" %}{% else %}<div class="empty">No results. Try another search.</div>{% endfor %}</section>{% endblock %}
