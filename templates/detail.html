@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block title %}{{ item.title }} — Saki{% endblock %}{% block content %}
+{% if item.banner %}<div class="detail-banner" style="background-image:linear-gradient(90deg,#090b12 0%,#090b1288 55%,transparent),url('{{ item.banner }}')"></div>{% endif %}
+<div class="detail-layout">{% if item.poster %}<img class="detail-poster" src="{{ item.poster }}" alt="{{ item.title }} poster">{% else %}<div class="detail-poster poster-placeholder">SAKI</div>{% endif %}
+<div class="detail-copy"><p class="eyebrow">{{ item.network or 'SAKI LIBRARY' }}</p><h1>{{ item.title }}</h1><p class="muted">{{ item.year or 'Year unknown' }} · {{ item.status }} · {{ item.genres }}</p><p>{{ item.description }}</p><button class="button watchlist-toggle" data-watchlist="{{ item.id }}" data-title="{{ item.title }}" data-poster="{{ item.poster }}">＋ Add to watchlist</button></div></div>
+<div class="section-head"><h2>Episodes <span class="muted">({{ item.episodes|length }})</span></h2></div>
+<div class="episode-list">{% for ep in item.episodes %}<a class="episode-row" href="{{ url_for('watch',episode_id=ep.id) }}"><span class="ep-number">EP {{ '%02d'|format(ep.number) }}</span><strong>{{ ep.title or ('Episode ' ~ ep.number) }}</strong><small>{{ ep.language }}</small><span class="play-small">▶</span></a>{% else %}<div class="empty">No episodes have been added yet.</div>{% endfor %}</div>
+{% endblock %}
