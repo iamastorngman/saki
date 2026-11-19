@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block title %}Saki — Watch Anime{% endblock %}{% block content %}
+<section class="hero"><div class="hero-copy"><p class="eyebrow">YOUR ANIME UNIVERSE</p><h1>Stories that<br><span>stay with you.</span></h1><p class="muted">Discover anime, explore episodes and pick up right where you left off.</p><a class="button" href="{{ url_for('catalogue') }}">Explore anime <b>→</b></a></div><div class="hero-art"><div class="ring ring-a"></div><div class="ring ring-b"></div><div class="hero-logo">SAKI</div><span class="hero-orb"></span></div></section>
+<section id="continue-section" class="hidden"><div class="section-head"><h2>Continue watching</h2><span class="muted">Saved on this device</span></div><div id="continue-grid" class="cards"></div></section>
+{% if featured %}<div class="section-head"><h2>Featured anime</h2></div><section class="cards">{% for item in featured %}{% include "_card.html" %}{% endfor %}</section>{% endif %}
+<div class="section-head"><h2>Recently added</h2><a href="{{ url_for('catalogue') }}">View all →</a></div><section class="cards">{% for item in latest %}{% include "_card.html" %}{% else %}<div class="empty">No anime yet. Add your first title from the admin panel.</div>{% endfor %}</section>
+<h2>Browse networks</h2><div class="chips">{% for n in networks %}<a href="{{ url_for('catalogue',network=n) }}">{{ n }}</a>{% endfor %}</div>
+{% endblock %}
